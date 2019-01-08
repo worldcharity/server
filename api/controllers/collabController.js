@@ -9,7 +9,7 @@ const sequelize = require('sequelize');
 exports.findByEvent = (req, res) => {
 	Collab.findAll({
         where: {
-            eventId: req.params.eventId,
+            eventId: req.params.eventId
           },
           include: [{
                   model: Event,

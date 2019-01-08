@@ -8,7 +8,9 @@ module.exports = function(app) {
   app.route('/posts/:causeId')
     .get(postCnt.findByCauseId)
   app.route('/poststrending/:causeId')
-    .get(postCnt.findByComments)     
+    .get(postCnt.findByComments)
+  app.route('/posts/add')
+    .post(postCnt.create);     
    
 
   

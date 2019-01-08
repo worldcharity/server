@@ -21,6 +21,8 @@ module.exports = function(app) {
     .get(userCnt.infos)
   app.route('/users/findauser/:userId')
     .get(userCnt.user)
+  app.route('/users/followers/:userId')
+    .get(userCnt.followers)
   app.route('/users/charities')
     .get(userCnt.charities)
   app.route('/users/collabs/:userId')
@@ -41,5 +43,6 @@ module.exports = function(app) {
     app.route('/logomodif/:userId')
     .post(upload.single("uploadfile"),userCnt.updatephoto);
 
-  
+    app.route('/userloc/:eventId/:longitude/:latitude')
+    .post(userCnt.updatelocalisation);
     };

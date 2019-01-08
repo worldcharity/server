@@ -13,6 +13,9 @@ const sequelize = new Sequelize(env.database, env.username, env.password, {
     idle: env.pool.idle
   }
 });
+Sequelize.DATE.prototype._stringify = function _stringify(date, options) {
+  return this._applyTimezone(date, options).format('YYYY-MM-DD HH:mm:ss.SSS');
+};
 
 const db = {};
 
@@ -58,8 +61,8 @@ db.post.hasMany(db.comment, {as: 'Comments'});
 //db.user.belongsToMany(db.user, { as: 'Subs', through: 'sub' })
 db.event.belongsTo(db.user);
 db.user.hasMany(db.event, {as: 'Events'});
+db.user.hasMany(db.post, {as: 'Posts'});
 db.post.belongsTo(db.user, {as: 'user'});
-
 db.user.belongsToMany(db.user, { as: 'Subs', through: db.sub , foreignKey: 'id_user' })
 db.user.belongsToMany(db.user, { as: 'Users', through: db.sub, foreignKey: 'id_sub' })
 

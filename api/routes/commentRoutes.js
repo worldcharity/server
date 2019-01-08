@@ -8,7 +8,7 @@ module.exports = function(app) {
   app.route('/commentpost')
     .post(comCnt.createCommentPost);
 
-   app.route('/comment/:commentId')
+   app.route('/comment/hide/:commentId')
     .put(comCnt.hideShowComment)
     .delete(comCnt.delete);
     };

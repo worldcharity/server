@@ -22,6 +22,13 @@ require('./api/routes/collabRoutes.js')(app);
 // Create a Server
 http = require('http')
 server = http.createServer(app)
+var server = app.listen(3000, function () {
+
+  var host = server.address().address
+  var port = server.address().port
+
+  console.log("App listening at http://%s:%s", host, port)
+})
 io = require('socket.io').listen(server)
 io.on('connection', (socket) => {
 
@@ -33,42 +40,21 @@ io.on('connection', (socket) => {
   
           socket.broadcast.emit('userjoinedthechat',userNickname +" : has joined the chat ");
       })
-  
-  
   socket.on('messagedetection', (senderNickname,messageContent) => {
   
-         //log the message in console 
-  
          console.log(senderNickname+" : " +messageContent)
-  
-        //create a message object 
-  
         let  message = {"message":messageContent, "senderNickname":senderNickname}
-  
-         // send the message to all users including the sender  using io.emit() 
-  
         io.emit('message', message )
   
         })
   
   socket.on('disconnect', function() {
   
-          console.log(userNickname +' has left ')
-  
+          
           socket.broadcast.emit( "userdisconnect" ,' user has left')
-  
-  
-  
-  
+
       })
   })
   
-var server = app.listen(3000, function () {
-
-  var host = server.address().address
-  var port = server.address().port
-
-  console.log("App listening at http://%s:%s", host, port)
-})
 
 
