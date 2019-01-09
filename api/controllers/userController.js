@@ -23,34 +23,65 @@ exports.checkUser = (req, res) => {
 			}
 		})
 		.spread((user, created) => {
-			User.update({
-				name: req.body.first_name,
-				last_name: req.body.last_name,
-				photo: req.body.photo
-			}, {
-				where: {
-					id: user.id
-				}
-			}).then(() => {
-				User.findAll({
+			if(created)
+			{
+				User.update({
+					name: req.body.first_name,
+					last_name: req.body.last_name,
+					photo: req.body.photo
+				}, {
 					where: {
-						id: user.id,
+						id: user.id
 					}
-				}).then(users => {
-					users.forEach((resultSetItem) => {
-						var r = resultSetItem.get({
-						  plain: true
-						});
-						res.json({
-							created: created,
-							user: r
-						});
+				}).then(() => {
+					User.findAll({
+						where: {
+							id: user.id,
+						}
+					}).then(users => {
+						users.forEach((resultSetItem) => {
+							var r = resultSetItem.get({
+							  plain: true
+							});
+							res.json({
+								created: created,
+								user: r
+							});
+					});
+					
 				});
-				
-			});
-
-
-		})
+	
+	
+			})
+			}
+			else{
+				User.update({
+				}, {
+					where: {
+						id: user.id
+					}
+				}).then(() => {
+					User.findAll({
+						where: {
+							id: user.id,
+						}
+					}).then(users => {
+						users.forEach((resultSetItem) => {
+							var r = resultSetItem.get({
+							  plain: true
+							});
+							res.json({
+								created: created,
+								user: r
+							});
+					});
+					
+				});
+	
+	
+			})
+			}
+			
 })};
 exports.editRole = (req, res) => {
 	const id = req.body.id;
@@ -69,7 +100,7 @@ exports.update = (req, res) => {
 	User.update({
 		name: req.params.firstname,
 		description: req.params.description,
-		photo: req.file.fieldname + "-" + Date.now() + "-" + req.file.originalname
+		photo: req.file.fieldname + "-" + req.file.originalname
 	}, {
 		where: {
 			id: req.params.userId
@@ -81,7 +112,7 @@ exports.update = (req, res) => {
 exports.updatephoto = (req, res) => {
 	const id = req.params.userId;
 	User.update({
-		confirmation_photo: req.file.fieldname + "-" + Date.now() + "-" + req.file.originalname
+		confirmation_photo: req.file.fieldname + "-" + req.file.originalname
 	}, {
 		where: {
 			id: req.params.userId
@@ -145,7 +176,7 @@ exports.collabs = (req, res) => {
 			}
 		]
 	}).then(collabs => {
-		// Send all events to Client
+	
 		res.send(collabs);
 	});
 

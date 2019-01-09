@@ -9,6 +9,7 @@ const db = require('./api/config/db.config.js');
 db.sequelize.sync({force: false}).then(() => {
   console.log('Drop and Resync with { force: false }');
 });
+global.__basedir = __dirname;
 
 require('./api/routes/eventRoutes.js')(app);
 require('./api/routes/causeRoutes.js')(app);

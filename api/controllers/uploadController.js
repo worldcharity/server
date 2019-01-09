@@ -4,7 +4,7 @@ const db = require('../config/db.config.js');
 const Cause = db.cause;
 
 exports.addImg = (req, res) => {
-	 console.log(req.file.fieldname + "-" + Date.now() + "-" + req.file.originalname);
+	 console.log(req.file.fieldname + "-" + req.file.originalname);
 	  res.json({'msg': 'File uploaded successfully!', 'file': req.file});
 	};
 	  

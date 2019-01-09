@@ -6,6 +6,7 @@ const User = db.user;
 const Cause = db.cause;
 const Comment = db.comment;
 const Vote = db.vote;
+const Photo = db.photo;
 const EventType = db.donationtype;
 const DonationEvent = db.donationevent;
 const Collab = db.collab;
@@ -65,9 +66,9 @@ exports.create = (req, res) => {
             notif_type: '2',
             notif_id: event.id
               },
-            topic: 'user_'+r.id_user
+            topic: 'user_'+r.id_sub
         }
-        console.log(r.id_user);
+        console.log(r.id_sub);
       });    
       });
   
@@ -346,7 +347,7 @@ exports.addDonationEvent = (req, res) => {
 };
 exports.updatephoto = (req, res) => {
 	Photo.create( { 
-	 url : req.file.fieldname + "-" + Date.now() + "-" + req.file.originalname ,
+	 url : req.file.fieldname + "-" + req.file.originalname ,
 	 eventId : req.params.eventId
 	  }).then(comment => {
 		Photo.findAll({
