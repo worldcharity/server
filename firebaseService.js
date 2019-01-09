@@ -1,7 +1,7 @@
 var firebase = require('firebase-admin');
 var request = require('request');
 
-var API_KEY = "AIzaSyBtYbpKPHif-xNg1JBBuqpjjGbsQT2GJXc"; // Your Firebase Cloud Messaging Server API key
+var API_KEY = "AAAAdlV1GHA:APA91bEsdnKCjbHwVQC0bfzGNjhpC1nEzmw-c0krODekuQg20dVG9dHB69EujjeDlSEp8mYG6keC7RVRSE4csG2HROvvLJKpG-leyBPIcUcuUzffGSle_xmzlNs0J9X8_ysa7z-OPApA"; // Your Firebase Cloud Messaging Server API key
 
 // Fetch the service account key JSON file contents
 var serviceAccount = require("./worldCharityServiceAccount.json");

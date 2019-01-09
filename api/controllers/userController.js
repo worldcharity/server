@@ -100,7 +100,7 @@ exports.update = (req, res) => {
 	User.update({
 		name: req.params.firstname,
 		description: req.params.description,
-		photo: req.file.fieldname + "-" + req.file.originalname
+		photo: "192.168.43.172:3000/image/" +req.file.fieldname + "-" + req.file.originalname
 	}, {
 		where: {
 			id: req.params.userId
@@ -112,7 +112,7 @@ exports.update = (req, res) => {
 exports.updatephoto = (req, res) => {
 	const id = req.params.userId;
 	User.update({
-		confirmation_photo: req.file.fieldname + "-" + req.file.originalname
+		confirmation_photo: "192.168.43.172:3000/image/" + req.file.fieldname + "-" + req.file.originalname
 	}, {
 		where: {
 			id: req.params.userId
