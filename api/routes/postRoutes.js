@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(app) {
-  var postCnt = require('../controllers/PostController');
+  var postCnt = require('../controllers/postController');
 
   // prefCnt Routes
   app.route('/posts')

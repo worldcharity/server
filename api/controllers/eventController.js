@@ -50,28 +50,7 @@ exports.create = (req, res) => {
     userId: req.body.charity
 
 	}).then(event => {
-    Sub.findAll({
-      where: {
-        id_user: req.body.charity,
-      }
-      }).then(users => {
-      users.forEach((resultSetItem) => {
-        var r = resultSetItem.get({
-          plain: true
-        });
-        var message = {
-          data: {
-            title : 'New event',
-            body : req.body.nameCharity + ' added a new event',
-            notif_type: '2',
-            notif_id: event.id
-              },
-            topic: 'user_'+r.id_sub
-        }
-        console.log(r.id_sub);
-      });    
-      });
-  
+      console.log(event);
     res.send(event);
     
 	});

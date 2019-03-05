@@ -23,6 +23,7 @@ exports.checkUser = (req, res) => {
 			}
 		})
 		.spread((user, created) => {
+			console.log("checking user")
 			if(created)
 			{
 				User.update({
