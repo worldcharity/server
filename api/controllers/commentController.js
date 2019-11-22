@@ -7,6 +7,7 @@ const User = db.user;
 
 exports.createCommentEvent = (req, res) => {
 	// Save to MySQL database
+	console.log({comment : req.body})
 	Comment.create({
 	body: req.body.body,
     state: req.body.state,

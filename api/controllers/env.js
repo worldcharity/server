@@ -2,7 +2,7 @@ const env = {
   database: 'worldcharity',
   username: 'worldcharity',
   password: 'worldcharity',
-  host: '41.226.11.252',
+  host: 'localhost',
   dialect: 'mysql',
   pool: {
 	  max: 5,

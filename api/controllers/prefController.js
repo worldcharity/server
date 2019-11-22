@@ -46,10 +46,12 @@ exports.findById = (req, res) => {
 
 
 exports.delete = (req, res) => {
-	const id = req.params.prefId;
+	const id_cause = req.params.causeId;
+	const id_user = req.params.userId;
 	Prefs.destroy({
-	  where: { id: id }
+	  where: { id_user: id_user , id_cause: id_cause}
 	}).then(() => {
-	  res.status(200).send('deleted successfully a pref with id = ' + id);
+		console.log('deleted successfully a pref with cause = ' + id_cause + ' and user = ' + id_user)
+	  res.status(200).send('deleted successfully a pref with cause = ' + id_cause + ' and user = ' + id_user);
 	});
 };

@@ -1,8 +1,8 @@
 const env = {
   database: 'worldcharity',
-  username: 'worldcharity',
-  password: 'worldcharity',
-  host: '41.226.11.252',
+  username: 'root',
+  password: 'mysql',
+  host: 'localhost',
   dialect: 'mysql',
   pool: {
 	  max: 5,

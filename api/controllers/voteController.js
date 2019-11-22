@@ -36,6 +36,7 @@ exports.createVotePost = (req, res) => {
 
 exports.createVoteEvent = (req, res) => {
 	// Save to MySQL database
+	console.log({body : req.body})
 	Vote.create({
 	name: req.body.name,
     eventId: req.body.id_event,
@@ -61,6 +62,7 @@ exports.update = (req, res) => {
 // Delete a Vote by Id
 exports.delete = (req, res) => {
 	const id = req.params.voteId;
+	console.log({id})
 	Vote.destroy({
 	  where: { id: id }
 	}).then(() => {

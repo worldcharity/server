@@ -36,8 +36,8 @@ module.exports = function(app) {
   app.route('/users/unfav/:userId/:eventId')
     .delete(userCnt.unfav)
 
-  app.route('/usermodif/:userId/:firstname/:description')
-    .post(upload.single("uploadfile"),userCnt.update);
+  app.route('/usermodif/:userId/:firstname/:lastname')
+    .post(userCnt.update);
     //.get(eventCnt.getImg);
 
     app.route('/logomodif/:userId')

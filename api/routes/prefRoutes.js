@@ -9,7 +9,8 @@ module.exports = function(app) {
     .post(prefCnt.create);
 
    app.route('/prefs/:prefId')
-    .get(prefCnt.findById)
+    .get(prefCnt.findById);
+    app.route('/prefs/:causeId/:userId')
     //.put(prefCnt.update_an_pref)
     .delete(prefCnt.delete);
     };
